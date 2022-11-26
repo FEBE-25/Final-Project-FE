@@ -20,8 +20,6 @@ const OrderForm = () => {
     const [alamat, setAlamat] = useState("")
     const [maps, setMaps] = useState("")
     const [tambahan, setTambahan] = useState("")
-    const [statusBayar, setStatusBayar] = useState("")
-    const [bukti, setBukti] = useState("")
     const [dataOrder, setDataOrder] = useState({})
 
     const { teacher } = useSelector((state) => state.order)
@@ -35,7 +33,7 @@ const OrderForm = () => {
     const navigation = useNavigate()
 
     const postOrder = () => {
-        const dataOrder = { userId, teacherId, biayaTotal, jenjangMateri, topik, detailTopik, tanggal, jamMulai, durasi, modeBelajar, alamat, maps, tambahan, statusBayar, bukti }
+        const dataOrder = { userId, teacherId, biayaTotal, jenjangMateri, topik, detailTopik, tanggal, jamMulai, durasi, modeBelajar, alamat, maps, tambahan }
         axios.post('https://634a01375df95285140a732e.mockapi.io/order', dataOrder).then(res => {
             navigation('/request')
         })

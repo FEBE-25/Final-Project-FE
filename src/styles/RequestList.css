@@ -17,17 +17,29 @@
   margin-bottom: 16px;
 }
 
-.teacher-info .info-foto {
-  width: 96px;
-  height: 96px;
-  background-color: gray;
-  border-radius: 50%;
-  margin: auto;
+.header-pesanan {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.teacher-info .edukasi {
-  font-size: 14px;
-  color: gray;
+.status-pesanan {
+  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: 8px;
+  font-weight: 600;
+}
+
+.status-pesanan.belum {
+  background-color: #FDF4D7;
+  color: #8D6C1F;
+  border: 2px solid #F2CA64;
+}
+
+.status-pesanan.sudah {
+  background-color: #E4FCEC;
+  color: #197742;
+  border: 2px solid #38C173;
 }
 
 .urutan-pesanan {
@@ -35,6 +47,9 @@
 }
 
 .pesanan-sub-judul {
+  border-bottom: 1px solid lightgray;
+  padding: 8px 0;
+  margin-bottom: 8px;
   font-weight: 700;
 }
 
@@ -42,32 +57,55 @@
   color: var(--orange);
   font-weight: 700;
   cursor: pointer;
-  margin: 16px 0;
+  margin-top: 16px;
   text-align: center;
 }
 
+.pesanan-btn-bayar {
+  margin-top: 16px;
+  border: 2px solid var(--orange);
+  padding: 8px 0;
+  border-radius: 8px;
+  font-weight: 700;
+  color: var(--orange);
+  text-align: center;
+  transition: all ease-in 0.2s;
+  cursor: pointer;
+}
+
+.pesanan-btn-bayar:hover {
+  background-color: #F2CA64;
+  color: #8D6C1F;
+}
+
+.pesanan-biaya {
+  margin-bottom: 8px;
+}
+
+.pesanan-waktu,
 .pesanan-materi,
 .pesanan-lokasi,
-.teacher-info {
+.pesanan-teacher {
   margin-bottom: 16px;
 }
 
-.teacher-info>p:first-child {
-  font-weight: 700;
-  margin-bottom: 16px;
+.pesanan-waktu {
+  margin-top: 16px;
 }
 
 .teacher-info .info-text {
   margin-top: 8px;
 }
 
-.teacher-info .edukasi {
-  margin: auto;
-}
-
 @media only screen and (min-width: 1080px) {
   .order-container {
-    width: 480px;
+    width: 560px;
     margin: auto;
+  }
+
+  .header-pesanan {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
 }
