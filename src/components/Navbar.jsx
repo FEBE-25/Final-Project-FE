@@ -15,7 +15,6 @@ function Navbar() {
 
   const handleToggle = () => {
     setToggle(!isToggle);
-    console.log(user)
   }
 
   const resetToggle = () => {
