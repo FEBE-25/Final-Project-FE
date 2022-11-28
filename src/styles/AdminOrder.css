@@ -1,0 +1,24 @@
+.pesanan-approval {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+}
+
+.pesanan-approval-btn {
+    background-color: white;
+    padding: 4px 8px;
+    border-radius: 8px;
+    cursor: pointer;
+    border: 2px solid var(--orange)
+}
+
+.pesanan-approval-btn.acc {
+    background-color: var(--orange);
+    color: white;
+    font-weight: 700;
+}
+
+.pesanan-approval-btn.rej {
+    font-weight: 700;
+    color: var(--orange);
+}
