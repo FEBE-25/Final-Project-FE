@@ -9,6 +9,9 @@ import RequestList from "./pages/RequestList";
 import Schedule from "./pages/Schedule";
 import OrderForm from "./pages/OrderForm";
 import PaymentPage from "./pages/PaymentPage";
+import Admin from "./pages/Admin";
+import AdminTeacher from "./pages/AdminTeacher";
+import AdminOrder from "./pages/AdminOrder";
 
 function App() {
   return (
@@ -25,6 +28,7 @@ function App() {
           <Route path="/schedule" element={<Schedule />}></Route>
           <Route path="/order-form" element={<OrderForm />}></Route>
           <Route path="/payment" element={<PaymentPage />}></Route>
+          <Route path="/admin" element={<Admin />}></Route>
         </Routes>
       </BrowserRouter>
     </div>
