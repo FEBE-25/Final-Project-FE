@@ -1,33 +1,62 @@
 import React, { useEffect, useState } from 'react'
+import ChevronDown from '../images/chevron-down.svg'
+import ChevronUp from '../images/chevron-up.svg'
 import "../styles/RequestList.css";
 import "../styles/DetailRequest.css";
 import "../styles/AdminOrder.css";
 
-const OrderCardAdmin = ({ item, teachers }) => {
+const OrderCardAdmin = ({ item, teachers, users }) => {
     const [detail, setDetail] = useState(false)
+    const [approval, setApproval] = useState("Menunggu Approval")
 
     const toggleDetail = () => {
         setDetail(!detail)
     }
 
+    const rejectOrder = () => {
+        setApproval("Order Rejected")
+    }
+
+    const acceptOrder = () => {
+        setApproval("Order Accepted")
+    }
+
+    const getApproval = (approval) => {
+        if (approval == "Menunggu Approval")
+            return ("approval waiting")
+        else if (approval == "Order Rejected")
+            return ("approval rejected")
+        else if (approval == "Order Accepted")
+            return ("approval accepted")
+    }
+
     return (
-        // <p>{item.biaya}</p>
-        <div className="pesanan">
+        <div className="pesanan admin">
 
             <div className="header-pesanan">
                 <p className="urutan-pesanan">Pesanan #{item.id}</p>
-                <p className={item.status ? "status-pesanan sudah" : "status-pesanan belum"}>{item.status ? ("Telah Dibayar") : ("Menunggu Pembayaran")}</p>
+                {item.status ? <p className={getApproval(approval)}>{approval}</p> : <></>}
             </div>
 
-            <p className="pesanan-biaya">Rp{item.biaya}.000</p>
+            <p className="pesanan-biaya">Biaya: Rp{item.biaya}.000</p>
+            <p className='pesanan-status'>Status: {item.status ? ("Telah Dibayar") : ("Menunggu Pembayaran")}</p>
 
-            {item.status ?
+            {item.status && approval == "Menunggu Approval" ?
                 <div className="pesanan-approval">
-                    <button className="pesanan-approval-btn rej">Reject Order</button>
-                    <button className="pesanan-approval-btn acc">Accept Order</button>
+                    <button className="pesanan-approval-btn rej" onClick={rejectOrder}>Reject Order</button>
+                    <button className="pesanan-approval-btn acc" onClick={acceptOrder}>Accept Order</button>
                 </div>
                 : <></>
             }
+
+            {/* {item.status && item.approval ?
+                <div className="pesanan-approval">
+                    <button className="pesanan-approval-btn rej">Accepted</button>
+
+                </div>
+                : <button className="pesanan-approval-btn acc">Rejected Order</button>
+            } */}
+
 
             {
                 detail &&
@@ -68,12 +97,25 @@ const OrderCardAdmin = ({ item, teachers }) => {
                                 </div>
                             )
                     })}
+
+                    {users.map((user, index) => {
+                        if (user.id == item.userId)
+                            return (
+                                <div className="pesanan-user" key={index}>
+                                    <p className="pesanan-sub-judul">Pemesan</p>
+                                    <div className="info-text">
+                                        <p className="nama">Nama: {user.nama}</p>
+                                        <p className="pesanan-user-email">Email: {user.email}</p>
+                                        <p className="pesanan-user-nohp"> Nomor HP: {user.noHp}</p>
+                                    </div>
+                                </div>
+                            )
+                    })}
+
                 </>
             }
 
-            <p onClick={toggleDetail} className="toggle-detail">{detail ? <span>Tutup Detail</span> : <span>Lihat Detail</span>}</p>
-
-
+            <div className="admin-toggle-detail" onClick={toggleDetail}>{detail ? <img src={ChevronUp} alt="" /> : <img src={ChevronDown} alt="" />}</div>
         </div>
     )
 }

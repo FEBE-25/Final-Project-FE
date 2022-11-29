@@ -1,3 +1,12 @@
+.pesanan.admin {
+    padding: 24px;
+    padding-bottom: 0px;
+}
+
+.admin .header-pesanan {
+    margin-bottom: 8px;
+}
+
 .pesanan-approval {
     display: flex;
     justify-content: center;
@@ -21,4 +30,33 @@
 .pesanan-approval-btn.rej {
     font-weight: 700;
     color: var(--orange);
+}
+
+.admin-toggle-detail {
+    cursor: pointer;
+    border-top: 1px solid lightgray;
+    margin-top: 24px;
+    padding: 8px 0;
+    display: flex;
+    justify-content: center;
+}
+
+.approval {
+    font-weight: 700;
+}
+
+.approval.waiting {
+    color: #F2CA64;
+}
+
+.approval.rejected {
+    color: #DC303d;
+}
+
+.approval.accepted {
+    color: #38C173;
+}
+
+.pesanan-status {
+    margin-bottom: 16px;
 }
