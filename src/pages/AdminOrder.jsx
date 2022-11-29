@@ -11,6 +11,7 @@ function AdminOrder() {
     const [dataRequest, setDataRequest] = useState([]);
     const [detail, setDetail] = useState(false);
     const [listUser, setListUser] = useState({});
+    const [approval, setApproval] = useState("")
 
     useEffect(() => {
         axios
@@ -21,7 +22,7 @@ function AdminOrder() {
             .catch((err) => {
                 console.log(err);
             });
-    }, []);
+    }, [approval]);
 
     useEffect(() => {
         dispatch(getTeachers());
@@ -44,7 +45,7 @@ function AdminOrder() {
                 {dataRequest.map((item, index) => {
                     return (
 
-                        <OrderCardAdmin key={index} item={item} teachers={teachers} users={listUser} />
+                        <OrderCardAdmin key={index} item={item} teachers={teachers} users={listUser} stateChanger={setApproval} />
 
                     )
                 })}

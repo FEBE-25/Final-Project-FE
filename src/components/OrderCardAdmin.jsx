@@ -4,21 +4,14 @@ import ChevronUp from '../images/chevron-up.svg'
 import "../styles/RequestList.css";
 import "../styles/DetailRequest.css";
 import "../styles/AdminOrder.css";
+import axios from 'axios';
 
-const OrderCardAdmin = ({ item, teachers, users }) => {
+const OrderCardAdmin = ({ item, teachers, users, stateChanger }) => {
     const [detail, setDetail] = useState(false)
     const [approval, setApproval] = useState("Menunggu Approval")
 
     const toggleDetail = () => {
         setDetail(!detail)
-    }
-
-    const rejectOrder = () => {
-        setApproval("Order Rejected")
-    }
-
-    const acceptOrder = () => {
-        setApproval("Order Accepted")
     }
 
     const getApproval = (approval) => {
@@ -30,33 +23,36 @@ const OrderCardAdmin = ({ item, teachers, users }) => {
             return ("approval accepted")
     }
 
+    const handleApproval = (approval, id) => {
+        axios.put(`https://634a01375df95285140a732e.mockapi.io/order/${id}`, {
+            ...item, "approval": approval
+        }).then((res) => {
+            console.log(res.data);
+            setApproval(approval)
+            stateChanger(approval)
+        }).catch((err) => {
+            console.log(err);
+        })
+    }
+
     return (
         <div className="pesanan admin">
 
             <div className="header-pesanan">
                 <p className="urutan-pesanan">Pesanan #{item.id}</p>
-                {item.status ? <p className={getApproval(approval)}>{approval}</p> : <></>}
+                {item.status ? <p className={getApproval(item.approval)}>{item.approval}</p> : <></>}
             </div>
 
             <p className="pesanan-biaya">Biaya: Rp{item.biaya}.000</p>
             <p className='pesanan-status'>Status: {item.status ? ("Telah Dibayar") : ("Menunggu Pembayaran")}</p>
 
-            {item.status && approval == "Menunggu Approval" ?
+            {item.status && item.approval == "Menunggu Approval" ?
                 <div className="pesanan-approval">
-                    <button className="pesanan-approval-btn rej" onClick={rejectOrder}>Reject Order</button>
-                    <button className="pesanan-approval-btn acc" onClick={acceptOrder}>Accept Order</button>
+                    <button className="pesanan-approval-btn rej" onClick={() => handleApproval("Order Rejected", item.id)}>Reject Order</button>
+                    <button className="pesanan-approval-btn acc" onClick={() => handleApproval("Order Accepted", item.id)}>Accept Order</button>
                 </div>
                 : <></>
             }
-
-            {/* {item.status && item.approval ?
-                <div className="pesanan-approval">
-                    <button className="pesanan-approval-btn rej">Accepted</button>
-
-                </div>
-                : <button className="pesanan-approval-btn acc">Rejected Order</button>
-            } */}
-
 
             {
                 detail &&
