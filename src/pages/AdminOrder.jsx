@@ -9,49 +9,44 @@ import OrderCardAdmin from "../components/OrderCardAdmin";
 
 function AdminOrder() {
     const [dataRequest, setDataRequest] = useState([]);
-    const [detail, setDetail] = useState(false)
+    const [detail, setDetail] = useState(false);
+    const [listUser, setListUser] = useState({});
 
     useEffect(() => {
         axios
             .get("https://634a01375df95285140a732e.mockapi.io/order")
             .then((res) => {
                 setDataRequest(res.data);
-                // console.log(res.data);
             })
             .catch((err) => {
                 console.log(err);
             });
     }, []);
 
-    const { user } = useSelector((state) => state.user)
-
-    const dispatch = useDispatch();
-
-    const { teachers } = useSelector((state) => state.teachers);
-
-    const toggleDetail = () => {
-        setDetail(!detail)
-    }
-
     useEffect(() => {
         dispatch(getTeachers());
     }, []);
 
-    let urutan = 0;
+    useEffect(() => {
+        axios.get("https://634a01375df95285140a732e.mockapi.io/users").then((res) => {
+            setListUser(res.data);
+        });
+    }, []);
+
+    const dispatch = useDispatch();
+
+    const { teachers } = useSelector((state) => state.teachers);
 
     return (
         <>
             <div className="order-container">
                 <h1 className="order-title">Daftar Sesi</h1>
                 {dataRequest.map((item, index) => {
-                    // if (item.userId == user.id) {
-                    urutan++;
                     return (
 
-                        <OrderCardAdmin key={index} item={item} urutan={urutan} teachers={teachers} />
+                        <OrderCardAdmin key={index} item={item} teachers={teachers} users={listUser} />
 
                     )
-                    // }
                 })}
             </div>
         </>
