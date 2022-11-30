@@ -17,16 +17,27 @@ const RequestCard = ({ item, urutan }) => {
         dispatch(getTeachers());
     }, []);
 
+    const getApproval = (approval) => {
+        if (approval == "Menunggu Approval")
+            return ("approval waiting")
+        else if (approval == "Order Rejected")
+            return ("approval rejected")
+        else if (approval == "Order Accepted")
+            return ("approval accepted")
+    }
+
     return (
         // <p>{item.biaya}</p>
         <div className="pesanan">
 
             <div className="header-pesanan">
-                <p className="urutan-pesanan">Pesanan #{urutan}</p>
+                <p className="urutan-pesanan">Pesanan #{item.id}</p>
                 <p className={item.status ? "status-pesanan sudah" : "status-pesanan belum"}>{item.status ? ("Telah Dibayar") : ("Menunggu Pembayaran")}</p>
             </div>
 
-            <p className="pesanan-biaya">Rp{item.biaya}.000</p>
+            {item.status ? <p className="pesanan-approval user">Approval Admin: {item.approval}</p> : <p className="pesanan-biaya">Rp{item.biaya}.000</p>}
+
+
 
 
 

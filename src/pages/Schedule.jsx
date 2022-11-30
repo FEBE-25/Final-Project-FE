@@ -40,10 +40,12 @@ const Schedule = () => {
       <div className="schedule-container">
         <div className="sch-title">
           <h1 className="title">Daftar Sesi</h1>
+          <p>{schedules.status}</p>
         </div>
 
         {schedules.map((item) => {
-          if (item.status === false && item.userId.toString() == user) {
+          console.log(item)
+          if (item.status === true && item.userId.toString() == user) {
             return (
               <div key={item.id}>
                 <div className="sch-wrapper-card">
