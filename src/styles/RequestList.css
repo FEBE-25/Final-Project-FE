@@ -53,6 +53,10 @@
   font-weight: 700;
 }
 
+.pesanan-approval.user {
+  display: block;
+}
+
 .toggle-detail {
   color: var(--orange);
   font-weight: 700;
