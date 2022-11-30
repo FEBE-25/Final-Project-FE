@@ -4,9 +4,10 @@ import "../styles/Schedule.css";
 import { useDispatch, useSelector } from "react-redux";
 import { getTeachers } from "../redux/action/teacherAction";
 import { getDataOrder } from "../redux/action/scheduleAction";
+import DetailSesi from "../components/DetailSesi";
 
 const Schedule = () => {
-  // const [detail, setDetail] = useState(false);
+  // const [show, setShow] = useState(false);
 
   const { teachers } = useSelector((state) => state.teachers);
   const { schedules } = useSelector((state) => state.schedules);
@@ -17,15 +18,18 @@ const Schedule = () => {
     dispatch(getDataOrder());
   }, []);
 
-  // const handleDetails = () => {
-  //   document.querySelector(".detail-sesi-wrapper").classList.toggle("active");
-  //   setDetail(!detail);
+  // const showModal = () => {
+  //   setShow(true);
+  //   // document.querySelector(".detail-sesi-wrapper").classList.toggle("active");
   // };
 
-  // const handleDetailsRemove = () => {
-  //   document.querySelector(".detail-sesi-wrapper").classList.remove("active");
-  //   setDetail(detail);
-  // };
+  const handleDetails = () => {
+    document.querySelector(".detail-sesi-wrapper").classList.toggle("active");
+  };
+
+  const handleDetailsRemove = () => {
+    document.querySelector(".detail-sesi-wrapper").classList.remove("active");
+  };
 
   const userId = useParams();
   const user = userId.id;
@@ -36,11 +40,6 @@ const Schedule = () => {
       <div className="schedule-container">
         <div className="sch-title">
           <h1 className="title">Daftar Sesi</h1>
-          {/* <div className="history">
-            <Link className="history-les" to={`/history/${user.id}`}>
-              <h3>History Les</h3>
-            </Link>
-          </div> */}
         </div>
 
         {schedules.map((item) => {
@@ -85,7 +84,9 @@ const Schedule = () => {
                       </p>
                     </div>
                     <div className="sch-card-right">
-                      <button className="btn-review">Lihat Detail Sesi</button>
+                      <button className="btn-review" onClick={handleDetails}>
+                        Lihat Detail Sesi
+                      </button>
                     </div>
                   </div>
                 </div>
@@ -93,6 +94,13 @@ const Schedule = () => {
             );
           }
         })}
+
+        <DetailSesi
+          schedules={schedules}
+          teachers={teachers}
+          userId={user}
+          handleDetailsRemove={handleDetailsRemove}
+        />
       </div>
     </div>
   );
