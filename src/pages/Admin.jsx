@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import AdminOrder from './AdminOrder'
 import AdminTeacher from './AdminTeacher'
 
+
 const Admin = () => {
     const [isPesanan, setIsPesanan] = useState(true);
     const [isTeacher, setIsTeacher] = useState(false);
@@ -18,10 +19,10 @@ const Admin = () => {
 
     return (
         <>
-            <h1>Hello Admin!</h1>
+            <h1 className='admin-title'>Hello Admin!</h1>
             <div className="admin-menu">
-                <button onClick={togglePesanan}>Daftar Pesanan</button>
-                <button onClick={toggleTeacher}>Daftar Teacher</button>
+                <button onClick={togglePesanan} className={isPesanan ? "active" : ""}>Daftar Pesanan</button>
+                <button onClick={toggleTeacher} className={isTeacher ? "active" : ""}>Daftar Teacher</button>
             </div>
 
             {isPesanan ? <AdminOrder /> : <></>}
