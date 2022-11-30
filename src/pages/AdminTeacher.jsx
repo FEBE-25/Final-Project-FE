@@ -22,8 +22,8 @@ const AdminTeacher = () => {
 
             <div className="teacher-admin-header">
                 <div className="search-teacher">
-                    <label htmlFor="nama">Nama</label>
-                    <input type="text" id='nama' placeholder='cari teacher' />
+                    <label htmlFor="cari-nama">Nama</label>
+                    <input type="text" id='cari-nama' placeholder='cari teacher' />
                 </div>
                 <div className="add-teacher">
                     <button>
@@ -57,36 +57,6 @@ const AdminTeacher = () => {
                             </tr>
                         )
                     })}
-
-                    <tr>
-                        <td>Juliana Cameron</td>
-                        <td>julianacameron@gmail.com</td>
-                        <td>0812345678</td>
-                        <td className='action'>
-                            <img src={EditIcon} alt="edit-icon" />
-                            <img src={DeleteIcon} alt="delete-icon" />
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>Juliana Cameron</td>
-                        <td>julianacameron@gmail.com</td>
-                        <td>0812345678</td>
-                        <td className='action'>
-                            <img src={EditIcon} alt="edit-icon" />
-                            <img src={DeleteIcon} alt="delete-icon" />
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>Juliana Cameron</td>
-                        <td>julianacameron@gmail.com</td>
-                        <td>0812345678</td>
-                        <td className='action'>
-                            <img src={EditIcon} alt="edit-icon" />
-                            <img src={DeleteIcon} alt="delete-icon" />
-                        </td>
-                    </tr>
 
                 </tbody>
             </table>
