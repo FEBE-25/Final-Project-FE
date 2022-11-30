@@ -2,7 +2,6 @@
 
 .schedule {
   width: 100%;
-  position: relative;
 }
 
 .schedule-container {
@@ -13,6 +12,7 @@
   flex-direction: column;
   gap: 30px;
   margin-top: 30px;
+  position: relative;
 }
 
 .title {
@@ -62,7 +62,7 @@
   width: 400px;
   height: auto;
   position: absolute;
-  top: 50%;
+  top: 200px;
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: white;
@@ -126,13 +126,23 @@
   }
 }
 
-@media screen and (max-width: 425px) {
+@media screen and (max-width: 480px) {
   .schedule-container {
     width: 95%;
   }
 
+  .title {
+    font-size: 1rem;
+  }
+
   .detail-sesi-wrapper {
     width: 95%;
+  }
+
+  .sch-card-item {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
   }
 
   .btn-detail-sesi {

@@ -11,6 +11,7 @@ import OrderForm from "./pages/OrderForm";
 import PaymentPage from "./pages/PaymentPage";
 import HistoryLes from "./pages/HistoryLes";
 import Admin from "./pages/Admin";
+import ReviewPengajar from "./components/ReviewPengajar";
 import AdminTeacher from "./pages/AdminTeacher";
 import AdminOrder from "./pages/AdminOrder";
 
@@ -30,6 +31,7 @@ function App() {
           <Route path="/order-form" element={<OrderForm />}></Route>
           <Route path="/payment" element={<PaymentPage />}></Route>
           <Route path="/history/:id" element={<HistoryLes />}></Route>
+          <Route path="/review" element={<ReviewPengajar />}></Route>
           <Route path="/admin" element={<Admin />}></Route>
         </Routes>
       </BrowserRouter>
