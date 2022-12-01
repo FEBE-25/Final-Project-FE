@@ -18,11 +18,10 @@ function TeacherList() {
   }, []);
 
   const filterTeachers = teachers.filter((teacher) => {
-    return (
-      teacher.nama.toLowerCase().includes(search) ||
-      teacher.edukasi[0].lokasi.toLowerCase().includes(search) ||
-      teacher.edukasi[0].jurusan.toLowerCase().includes(search)
-    );
+    return teacher.nama.toLowerCase().includes(search);
+    // ||
+    // teacher.edukasi[0].lokasi.toLowerCase().includes(search) ||
+    // teacher.edukasi[0].jurusan.toLowerCase().includes(search)
   });
 
   return (
@@ -43,8 +42,40 @@ function TeacherList() {
             onChange={(e) => setSearch(e.target.value.toLowerCase())}
           />
         </div>
-
-        <TeacherCard data={search.length > 0 ? filterTeachers : teachers} />
+        {/* <div className="wrapper-list-teacher">
+          {Object.keys(teachers).map((item, i) => {
+            <div
+              className="card-wrapper"
+              key={i}
+              onClick={() => {
+                window.location.href = `/teachers/${i}`;
+              }}
+            >
+              <div className="teacher-profile">
+                <span>Gambar</span>
+                <img
+                  src={`https://drive.google.com/uc?export=view&id=${item.foto}`}
+                  alt=""
+                  className="profile-img"
+                />
+              </div>
+              <div className="teacher-info">
+                <h3 className="info-name">{tre[i]?.nama}</h3>
+                <p className="info-university"></p>
+                2a
+                <p className="info-jurusan"></p>
+              </div>
+              <div className="teacher-rating">
+                <div className="teacher-rating-rating">
+                  ★ <span></span>
+                </div>
+                <div className="teacher-rating-review">10 ulasan</div>
+              </div>
+            </div>;
+          })}
+        </div> */}
+        {/* <TeacherCard teachers={teachers} /> */}
+        <TeacherCard teachers={search.length > 0 ? filterTeachers : teachers} />
       </div>
     </>
   );

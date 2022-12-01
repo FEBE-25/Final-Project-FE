@@ -1,32 +1,33 @@
 // import React, { useEffect, useState } from "react";
 import "../styles/TeacherCard.css";
 
-function TeacherCard({ data }) {
+function TeacherCard({ teachers }) {
+  const data = teachers;
   return (
     <div className="wrapper-list-teacher">
       {data.map((item) => (
         <div
           className="card-wrapper"
-          key={item.id}
+          key={item._id}
           onClick={() => {
-            window.location.href = `/teachers/${item.id}`;
+            window.location.href = `/teachers/${item._id}`;
           }}
         >
           <div className="teacher-profile">
             <img
-              src={`https://drive.google.com/uc?export=view&id=${item.foto}`}
+              src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
               alt=""
               className="profile-img"
             />
           </div>
           <div className="teacher-info">
             <h3 className="info-name">{item.nama}</h3>
-            <p className="info-university">{item.edukasi[0].lokasi}</p>
-            <p className="info-jurusan">{item.edukasi[0].jurusan}</p>
+            <p className="info-university">Universitas Bumigora</p>
+            <p className="info-jurusan">Ilmu Komputer</p>
           </div>
           <div className="teacher-rating">
             <div className="teacher-rating-rating">
-              ★ <span>{item.overall.bintang}</span>
+              ★ <span>4.5</span>
             </div>
             <div className="teacher-rating-review">10 ulasan</div>
           </div>
