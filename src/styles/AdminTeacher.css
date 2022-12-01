@@ -1,3 +1,25 @@
+.admin-title {
+  padding-top: 32px;
+}
+
+.log-out {
+  padding: 8px 16px;
+  border-radius: 8px;
+  margin: auto;
+  width: max-content;
+  font-weight: 700;
+  margin-bottom: 32px;
+  color: var(--orange);
+  border: 2px solid var(--orange);
+  cursor: pointer;
+  transition: all ease-in 0.2s;
+}
+
+.log-out:hover {
+  background-color: var(--orange);
+  color: white;
+}
+
 .teacher-admin-header {
   display: flex;
   justify-content: center;

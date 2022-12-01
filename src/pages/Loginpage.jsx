@@ -38,7 +38,10 @@ const Loginpage = () => {
       localStorage.setItem('logged_user', JSON.stringify(searchRes))
       localStorage.setItem('isLoggedIn', true)
       dispatch(userIn(searchRes))
-      navigation('/')
+      if (searchRes.admin) {
+        navigation('/admin')
+      } else
+        navigation('/')
     } else {
       alert("password salah")
     }

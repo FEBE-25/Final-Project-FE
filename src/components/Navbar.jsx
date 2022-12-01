@@ -34,73 +34,96 @@ function Navbar() {
     dispatch(userOut());
   };
 
+  const [isPesanan, setIsPesanan] = useState(true);
+  const [isTeacher, setIsTeacher] = useState(false);
+
+  const togglePesanan = () => {
+    setIsPesanan(true)
+    setIsTeacher(false)
+  }
+
+  const toggleTeacher = () => {
+    setIsTeacher(true)
+    setIsPesanan(false)
+  }
+
+
   return (
-    <nav>
-      <Link to="/">
-        <p className="nav-logo">Ajarin</p>
-      </Link>
-      <ul className={isToggle ? "nav-menu" : "nav-menu active"}>
-        <li>
-          <Link to={isLogin ? "/teacher" : "/regis"} onClick={resetToggle}>
-            Pesan Les
-          </Link>
-        </li>
-        <li>
-          <Link to={isLogin ? "/request" : "/regis"} onClick={resetToggle}>
-            Daftar Pesanan
-          </Link>
-        </li>
-        <li>
-          <Link to={isLogin ? `/schedule/${user?.id}` : "/regis"}>
-            Jadwal Les
-          </Link>
-        </li>
-        <li>
-          <Link className="history-les" to={`/history/${user?.id}`}>
-            History Les
-          </Link>
-        </li>
-        {isLogin ? (
-          <li className="profile-img">
-            <img
-              src={ProfileIcon}
-              alt="profile-icon"
-              onMouseOver={handleMouseOver}
-            />
-            {toggleLogOut && (
-              <p
-                className="log-out"
-                onMouseOut={handleMouseOut}
-                onClick={handleLogOut}
-              >
-                Log Out
-              </p>
-            )}
-          </li>
-        ) : (
+    <>
+      {
+        user && user.admin ?
           <>
-            <li>
-              <Link to="/login" onClick={resetToggle}>
-                Login
-              </Link>
-            </li>
-            <li>
-              <Link to="/regis" onClick={resetToggle}>
-                Register
-              </Link>
-            </li>
           </>
-        )}
-      </ul>
-      <div
-        onClick={handleToggle}
-        className={isToggle ? "hamburger" : "hamburger active"}
-      >
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-    </nav>
+          :
+          < nav >
+            <Link to="/">
+              <p className="nav-logo">Ajarin</p>
+            </Link>
+            <ul className={isToggle ? "nav-menu" : "nav-menu active"}>
+              <li>
+                <Link to={isLogin ? "/teacher" : "/regis"} onClick={resetToggle}>
+                  Pesan Les
+                </Link>
+              </li>
+              <li>
+                <Link to={isLogin ? "/request" : "/regis"} onClick={resetToggle}>
+                  Daftar Pesanan
+                </Link>
+              </li>
+              <li>
+                <Link to={isLogin ? `/schedule/${user?.id}` : "/regis"}>
+                  Jadwal Les
+                </Link>
+              </li>
+              <li>
+                <Link className="history-les" to={`/history/${user?.id}`}>
+                  History Les
+                </Link>
+              </li>
+              {isLogin ? (
+                <li className="profile-img">
+                  <img
+                    src={ProfileIcon}
+                    alt="profile-icon"
+                    onMouseOver={handleMouseOver}
+                  />
+                  {toggleLogOut && (
+                    <p
+                      className="log-out"
+                      onMouseOut={handleMouseOut}
+                      onClick={handleLogOut}
+                    >
+                      Log Out
+                    </p>
+                  )}
+                </li>
+              ) : (
+                <>
+                  <li>
+                    <Link to="/login" onClick={resetToggle}>
+                      Login
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/regis" onClick={resetToggle}>
+                      Register
+                    </Link>
+                  </li>
+                </>
+              )}
+            </ul>
+            <div
+              onClick={handleToggle}
+              className={isToggle ? "hamburger" : "hamburger active"}
+            >
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          </nav >
+      }
+    </>
+
   );
 }
 

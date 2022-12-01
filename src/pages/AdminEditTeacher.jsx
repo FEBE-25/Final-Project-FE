@@ -12,6 +12,8 @@ const AdminEditTeacher = () => {
     const { id } = useParams();
     console.log(id);
 
+    const { user, isLogin } = useSelector((state) => state.user);
+
     useEffect(() => {
         axios
             .get("https://634a01375df95285140a732e.mockapi.io/teachers")
@@ -29,15 +31,20 @@ const AdminEditTeacher = () => {
 
     return (
         <>
-            {
-                teacherList.map((teacher, index) => {
-                    if (teacher.id == id) {
-                        return (
-                            <EditBio teacher={teacher} key={index} />
-                        )
+            {user && user.admin ?
+
+                <>
+                    {
+                        teacherList.map((teacher, index) => {
+                            if (teacher.id == id) {
+                                return (
+                                    <EditBio teacher={teacher} key={index} />
+                                )
+                            }
+                        })
                     }
-                })
-            }
+                </>
+                : <></>}
         </>
     )
 }
