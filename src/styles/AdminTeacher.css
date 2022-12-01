@@ -1,75 +1,78 @@
 .teacher-admin-header {
-    display: flex;
-    gap: 32px;
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  align-items: center;
 }
 
 .search-teacher {
-    display: flex;
+  display: flex;
+  height: fit-content;
 }
 
 .search-teacher label {
-    padding: 7px;
-    background-color: var(--orange);
-    border: 1px solid var(--orange);
-    cursor: pointer;
+  padding: 7px;
+  background-color: var(--orange);
+  border: 1px solid var(--orange);
+  cursor: pointer;
 }
 
-.search-teacher input {
-    padding: 4px 16px;
-    border: none;
-    border: 1px solid var(--orange);
+.search-teacher .search-input {
+  padding: 4px 16px;
+  border: none;
+  border: 1px solid var(--orange);
 }
 
 .add-teacher button {
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    background-color: var(--orange);
-    padding: 8px 16px;
-    border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: var(--orange);
+  padding: 8px 16px;
+  border-radius: 4px;
 }
 
 .add-teacher button p {
-    font-weight: 700;
+  font-weight: 700;
 }
 
 .teacher-table {
-    border-collapse: collapse;
-    font-size: 0.9em;
-    font-family: sans-serif;
-    min-width: 400px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
-    table-layout: auto;
-    background-color: white;
-    margin-bottom: 32px;
+  border-collapse: collapse;
+  font-size: 0.9em;
+  font-family: sans-serif;
+  min-width: 400px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  table-layout: auto;
+  background-color: white;
+  margin-bottom: 32px;
 }
 
 .teacher-table thead tr {
-    background-color: var(--hijau-tua);
-    color: #ffffff;
-    text-align: left;
+  background-color: var(--hijau-tua);
+  color: #ffffff;
+  text-align: left;
 }
 
 .teacher-table th,
 .teacher-table td {
-    padding: 12px 15px;
+  padding: 12px 15px;
 }
 
 .teacher-table tbody tr {
-    border-bottom: thin solid #dddddd;
+  border-bottom: thin solid #dddddd;
 }
 
 .teacher-table tbody tr:nth-of-type(even) {
-    background-color: #f3f3f3;
+  background-color: #f3f3f3;
 }
 
 .teacher-table tbody tr:last-of-type {
-    border-bottom: 2px solid var(--hijau-muda);
+  border-bottom: 2px solid var(--hijau-muda);
 }
 
 .teacher-table .action {
-    display: flex;
-    gap: 16px;
-    cursor: pointer;
+  display: flex;
+  gap: 16px;
+  cursor: pointer;
 }

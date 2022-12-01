@@ -1,13 +1,15 @@
-import React, { useEffect } from "react";
-import EditIcon from "../images/edit-icon.svg";
-import DeleteIcon from "../images/delete-icon.svg";
+import React, { useEffect, useState } from "react";
+// import EditIcon from "../images/edit-icon.svg";
+// import DeleteIcon from "../images/delete-icon.svg";
 import AddIcon from "../images/add-icon.svg";
 import "../styles/AdminTeacher.css";
 import { useDispatch, useSelector } from "react-redux";
-import { getTeachers } from "../redux/action/teacherAction";
+import { getTeachers, deleteTeacher } from "../redux/action/teacherAction";
 import { Link, useNavigate } from "react-router-dom";
+import AdminTeacherCard from "../components/AdminTeacherCard";
 
 const AdminTeacher = () => {
+  const [search, setSearch] = useState("");
   useEffect(() => {
     dispatch(getTeachers());
     console.log(teachers);
@@ -19,12 +21,22 @@ const AdminTeacher = () => {
 
   const navigation = useNavigate();
 
+  const filterTeachers = teachers.filter((teacher) => {
+    return teacher.nama.toLowerCase().includes(search);
+  });
+
   return (
     <div className="teacher-container admin">
       <div className="teacher-admin-header">
         <div className="search-teacher">
           <label htmlFor="cari-nama">Nama</label>
-          <input type="text" id="cari-nama" placeholder="cari teacher" />
+          <input
+            type="text"
+            className="search-input"
+            id="cari-nama"
+            placeholder="cari teacher"
+            onChange={(e) => setSearch(e.target.value.toLowerCase())}
+          />
         </div>
         <div className="add-teacher">
           <button onClick={() => navigation("/add-teacher")}>
@@ -43,30 +55,12 @@ const AdminTeacher = () => {
             <th>Aksi</th>
           </tr>
         </thead>
-        <tbody>
-          {teachers.map((teacher, index) => {
-            return (
-              <tr key={index}>
-                <td>{teacher.nama}</td>
-                <td>{teacher.email}</td>
-                <td>{teacher.noHp}</td>
-                <td className="action">
-                  <Link
-                    to={`/edit-teacher/${teacher.id}`}
-                    state={{ ...teacher }}
-                  >
-                    <img
-                      src={EditIcon}
-                      alt="edit-icon"
-                      onClick={() => navigation(`/edit-teacher/${teacher.id}`)}
-                    />
-                  </Link>
-                  <img src={DeleteIcon} alt="delete-icon" />
-                </td>
-              </tr>
-            );
-          })}
-        </tbody>
+        <AdminTeacherCard
+          data={filterTeachers.length > 0 ? filterTeachers : teachers}
+          navigation={navigation}
+          dispatch={dispatch}
+          deleteTeacher={deleteTeacher}
+        />
       </table>
     </div>
   );
