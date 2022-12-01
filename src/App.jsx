@@ -14,6 +14,7 @@ import Admin from "./pages/Admin";
 import ReviewPengajar from "./components/ReviewPengajar";
 import AdminTeacher from "./pages/AdminTeacher";
 import AdminOrder from "./pages/AdminOrder";
+import AdminEditTeacher from "./pages/AdminEditTeacher";
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
           <Route path="/history/:id" element={<HistoryLes />}></Route>
           <Route path="/review" element={<ReviewPengajar />}></Route>
           <Route path="/admin" element={<Admin />}></Route>
+          <Route path="/edit-teacher/:id" element={<AdminEditTeacher />}></Route>
         </Routes>
       </BrowserRouter>
     </div>

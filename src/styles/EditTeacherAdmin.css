@@ -1,0 +1,101 @@
+.edit-biodata {
+    width: 720px;
+    color: var(--hijau-tua);
+    background-color: white;
+    padding: 24px;
+    margin: auto;
+    border-radius: 16px;
+}
+
+.edit-biodata>div:first-child {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 16px;
+}
+
+.edit-biodata .edit-header {
+    font-weight: 700;
+    font-size: 1.5rem;
+}
+
+.edit-header-top {
+    display: flex;
+    align-items: center;
+    gap: 48px;
+    margin-bottom: 16px;
+}
+
+.edit-header-top img {
+    width: 96px;
+}
+
+.pop-up-form {
+    width: 720px;
+    margin: auto;
+    margin-top: 24px;
+    border-radius: 16px;
+    padding: 24px;
+    background-color: white;
+}
+
+.pop-up-form .popup-header {
+    font-weight: 700;
+    font-size: 1.5rem;
+    border-bottom: 1px solid lightgray;
+    margin-bottom: 16px;
+}
+
+.pop-up-form label {
+    display: block;
+}
+
+.pop-up-form input {
+    margin-bottom: 16px;
+}
+
+.pop-up-form button {
+    background-color: var(--orange);
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-weight: 700;
+    margin-top: 16px;
+}
+
+.pop-up-form input,
+.pop-up-form textarea {
+
+
+    padding: 6px 12px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    appearance: none;
+    border-radius: 4px;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+
+
+}
+
+.pop-up-form input:focus,
+.pop-up-form textarea:focus {
+    color: #212529;
+    background-color: #fff;
+    border-color: #86b7fe;
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem rgb(13 110 253 / 25%);
+}
+
+.edit-container .return {
+    width: 720px;
+    display: block;
+    margin: 0 auto;
+    margin-top: 64px;
+    font-weight: 700;
+    color: var(--orange);
+    margin-bottom: 16px;
+
+}
