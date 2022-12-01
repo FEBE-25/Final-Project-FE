@@ -31,6 +31,53 @@
   font-size: 1rem;
 }
 
+.kontak-teacher {
+  color: var(--orange);
+  width: max-content;
+  cursor: pointer;
+  margin: 16px auto;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-weight: 700;
+  transition: all ease-in 0.2s;
+}
+
+.kontak-teacher:hover {
+  color: #ac741b;
+}
+
+.konfirmasi {
+  margin-top: 16px;
+  text-align: center;
+  border-top: 1px solid lightgray;
+  padding-top: 16px;
+}
+
+.konfirmasi p {
+  margin-bottom: 8px;
+}
+
+.konfirmasi-btn {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+}
+
+.konfirmasi-btn button {
+  font-weight: 700;
+  color: var(--orange);
+  background-color: white;
+  border: 2px solid var(--orange);
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.konfirmasi-btn button:hover {
+  background-color: var(--orange);
+  color: white;
+}
+
 @media screen and (max-width: 768px) {
   .detail-container {
     flex-direction: row;

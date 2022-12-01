@@ -47,7 +47,7 @@ function RequestList() {
             urutan++;
             return (
 
-              <RequestCard key={index} item={item} urutan={urutan} />
+              <RequestCard key={index} item={item} urutan={urutan} user={user} />
 
             )
           }

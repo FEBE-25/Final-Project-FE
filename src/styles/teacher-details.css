@@ -27,6 +27,7 @@
 }
 
 .header-btn button {
+    cursor: pointer;
     padding: 16px 16px;
     font-weight: 700;
     background-color: var(--orange);

@@ -35,18 +35,19 @@ const OrderCardAdmin = ({ item, teachers, users, stateChanger }) => {
         })
     }
 
+    const handleSesiSelesai = () => {
+
+    }
+
     return (
         <div className="pesanan admin">
 
             <div className="header-pesanan">
                 <p className="urutan-pesanan">Pesanan #{item.id}</p>
-                {item.status ? <p className={getApproval(item.approval)}>{item.approval}</p> : <></>}
+                <p className={getApproval(item.approval)}>{item.approval}</p>
             </div>
 
-            <p className="pesanan-biaya">Biaya: Rp{item.biaya}.000</p>
-            <p className='pesanan-status'>Status: {item.status ? ("Telah Dibayar") : ("Menunggu Pembayaran")}</p>
-
-            {item.status && item.approval == "Menunggu Approval" ?
+            {item.approval == "Menunggu Approval" ?
                 <div className="pesanan-approval">
                     <button className="pesanan-approval-btn rej" onClick={() => handleApproval("Order Rejected", item.id)}>Reject Order</button>
                     <button className="pesanan-approval-btn acc" onClick={() => handleApproval("Order Accepted", item.id)}>Accept Order</button>
