@@ -57,6 +57,7 @@ const AddTeacher = () => {
             <label htmlFor="nama">Nama</label>
             <input
               type="text"
+              className="input-addteacher"
               id="nama"
               value={nama}
               onChange={(e) => setNama(e.target.value)}
@@ -68,6 +69,7 @@ const AddTeacher = () => {
             <label htmlFor="email">Email</label>
             <input
               type="email"
+              className="input-addteacher"
               id="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
@@ -79,6 +81,7 @@ const AddTeacher = () => {
             <label htmlFor="noHp">No. Hp</label>
             <input
               type="number"
+              className="input-addteacher"
               id="noHp"
               value={noHp}
               onChange={(e) => setNoHp(e.target.value)}
@@ -90,6 +93,7 @@ const AddTeacher = () => {
             <label htmlFor="foto">Foto</label>
             <input
               type="file"
+              className="input-addteacher"
               id="foto"
               value={foto}
               onChange={(e) => setFoto(e.target.value)}
@@ -100,6 +104,7 @@ const AddTeacher = () => {
             <label htmlFor="univ">Universitas</label>
             <input
               type="text"
+              className="input-addteacher"
               id="univ"
               placeholder="Lokasi"
               value={edukasi[0]?.lokasi}
@@ -112,6 +117,7 @@ const AddTeacher = () => {
             />
             <input
               type="text"
+              className="input-addteacher"
               id="univ"
               placeholder="Jurusan"
               value={edukasi[0]?.jurusan}
@@ -128,6 +134,7 @@ const AddTeacher = () => {
             <label htmlFor="sma">SMA</label>
             <input
               type="text"
+              className="input-addteacher"
               id="sma"
               placeholder="Lokasi"
               value={edukasi[1]?.lokasi}
@@ -140,6 +147,7 @@ const AddTeacher = () => {
             />
             <input
               type="text"
+              className="input-addteacher"
               id="sma"
               placeholder="Jurusan"
               value={edukasi[1]?.jurusan}
@@ -156,6 +164,7 @@ const AddTeacher = () => {
             <label htmlFor="alamat">Alamat</label>
             <input
               type="text"
+              className="input-addteacher"
               id="alamat"
               placeholder="Kabupaten/Kota"
               value={alamat["kabupaten kota"]}
@@ -165,6 +174,7 @@ const AddTeacher = () => {
             />
             <input
               type="text"
+              className="input-addteacher"
               id="alamat"
               placeholder="Provinsi"
               value={alamat.provinsi}
@@ -178,6 +188,7 @@ const AddTeacher = () => {
             <label htmlFor="bidangAjar">Bidang Ajar</label>
             <input
               type="text"
+              className="input-addteacher"
               id="bidangAjar"
               value={bidangAjar}
               onChange={(e) => setBidangAjar(e.target.value.split(", "))}
