@@ -15,6 +15,7 @@ import ReviewPengajar from "./components/ReviewPengajar";
 import AdminTeacher from "./pages/AdminTeacher";
 import AdminOrder from "./pages/AdminOrder";
 import AdminEditTeacher from "./pages/AdminEditTeacher";
+import AddTeacher from "./components/AddTeacher";
 
 function App() {
   return (
@@ -34,7 +35,11 @@ function App() {
           <Route path="/history/:id" element={<HistoryLes />}></Route>
           <Route path="/review" element={<ReviewPengajar />}></Route>
           <Route path="/admin" element={<Admin />}></Route>
-          <Route path="/edit-teacher/:id" element={<AdminEditTeacher />}></Route>
+          <Route
+            path="/edit-teacher/:id"
+            element={<AdminEditTeacher />}
+          ></Route>
+          <Route path="/add-teacher" element={<AddTeacher />}></Route>
         </Routes>
       </BrowserRouter>
     </div>
