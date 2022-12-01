@@ -5,6 +5,7 @@ import AddIcon from '../images/add-icon.svg'
 import '../styles/AdminTeacher.css'
 import { useDispatch, useSelector } from 'react-redux'
 import { getTeachers } from '../redux/action/teacherAction'
+import { Link, useNavigate } from 'react-router-dom'
 
 const AdminTeacher = () => {
 
@@ -16,6 +17,8 @@ const AdminTeacher = () => {
     const dispatch = useDispatch();
 
     const { teachers } = useSelector((state) => state.teachers);
+
+    const navigation = useNavigate();
 
     return (
         <div className="teacher-container admin">
@@ -51,7 +54,9 @@ const AdminTeacher = () => {
                                 <td>{teacher.email}</td>
                                 <td>{teacher.noHp}</td>
                                 <td className='action'>
-                                    <img src={EditIcon} alt="edit-icon" />
+                                    <Link to={`/edit-teacher/${teacher.id}`} state={{ ...teacher }}>
+                                        <img src={EditIcon} alt="edit-icon" onClick={() => navigation(`/edit-teacher/${teacher.id}`)} />
+                                    </Link>
                                     <img src={DeleteIcon} alt="delete-icon" />
                                 </td>
                             </tr>
