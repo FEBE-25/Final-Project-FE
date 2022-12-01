@@ -8,14 +8,14 @@ import { userIn } from "../redux/action/userAction";
 
 const Regispage = () => {
 
-  const [nama, setNama] = useState("");
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [noHp, setNoHp] = useState("");
+  const [nohp, setNoHp] = useState("");
   const [password, setPass] = useState("");
   const [confirmPass, setConfirmPass] = useState("");
-  const [jenjang, setJenjang] = useState("SD");
+  const [jenjangpendidikan, setJenjang] = useState("SD");
   const [alamat, setAlamat] = useState("");
-  const [sekolah, setSekolah] = useState("");
+  const [asalsekolah, setSekolah] = useState("");
 
 
   const dispatch = useDispatch();
@@ -28,12 +28,12 @@ const Regispage = () => {
   };
 
   const validate = () => {
-    if (nama == '' || email == '' || noHp == '' || password == '' || confirmPass == '' || jenjang == '' || alamat == '' || sekolah == '') {
+    if (name == '' || email == '' || nohp == '' || password == '' || confirmPass == '' || jenjangpendidikan == '' || alamat == '' || asalsekolah == '') {
       alert("Data tidak valid")
     } else {
       if (password == confirmPass) {
-        const dataRegis = { nama, email, noHp, password, jenjang, alamat, sekolah }
-        axios.post('https://634a01375df95285140a732e.mockapi.io/users', dataRegis).then(res => {
+        const dataRegis = { name, email, nohp, password, jenjangpendidikan, alamat, asalsekolah }
+        axios.post('https://final-project-be-production-0be5.up.railway.app/user/register', dataRegis).then(res => {
           localStorage.setItem('logged_user', JSON.stringify(res.data))
           localStorage.setItem('isLoggedIn', true)
           dispatch(userIn(res.data))
@@ -63,8 +63,8 @@ const Regispage = () => {
                 name="name"
                 id="name"
                 placeholder="Masukkan nama lengkap"
-                value={nama}
-                onChange={e => setNama(e.target.value)}
+                value={name}
+                onChange={e => setName(e.target.value)}
               />
             </div>
 
@@ -87,7 +87,7 @@ const Regispage = () => {
                 name="hp"
                 id="hp"
                 placeholder="Masukkan no. hp"
-                value={noHp}
+                value={nohp}
                 onChange={e => setNoHp(e.target.value)}
               />
             </div>
@@ -119,7 +119,7 @@ const Regispage = () => {
             <div className="form__group">
               <label htmlFor="education">Jenjang Pendidikan</label>
               <select name="education" id="education"
-                value={jenjang}
+                value={jenjangpendidikan}
                 onChange={(e) => { setJenjang(e.target.value) }}>
                 <option value="SD">SD</option>
                 <option value="SMP">SMP</option>
@@ -148,7 +148,7 @@ const Regispage = () => {
                 name="school"
                 id="school"
                 placeholder="Masukkan asal sekolah"
-                value={sekolah}
+                value={asalsekolah}
                 onChange={e => setSekolah(e.target.value)}
               />
             </div>
