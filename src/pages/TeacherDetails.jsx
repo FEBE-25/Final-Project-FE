@@ -10,7 +10,6 @@ import { Link } from "react-router-dom";
 import { chooseTeacher } from "../redux/action/orderAction";
 
 const TeacherDetails = () => {
-
   const [isBio, setIsBio] = useState(true);
   const [isExp, setIsExp] = useState(false);
   const [isReview, setIsReview] = useState(false);
@@ -19,27 +18,27 @@ const TeacherDetails = () => {
     setIsBio(true);
     setIsExp(false);
     setIsReview(false);
-  }
+  };
 
   const handleExp = () => {
     setIsBio(false);
     setIsExp(true);
     setIsReview(false);
-  }
+  };
 
   const handleReview = () => {
     setIsBio(false);
     setIsExp(false);
     setIsReview(true);
-  }
+  };
 
   const handleBintang = (jumlah) => {
-    const elements = []
+    const elements = [];
     for (let i = 0; i < jumlah; i++) {
-      elements.push(i)
+      elements.push(i);
     }
-    return elements
-  }
+    return elements;
+  };
 
   const dispatch = useDispatch();
 
@@ -50,61 +49,91 @@ const TeacherDetails = () => {
   }, []);
 
   const params = useParams();
-  const navigation = useNavigate()
+  console.log(params.id);
+
+  const navigation = useNavigate();
 
   const handleChoose = (teacher) => {
     // console.log(teacher)
-    dispatch(chooseTeacher(teacher))
-    navigation('/order-form')
+    dispatch(chooseTeacher(teacher));
+    navigation("/order-form");
     // console.log(order.teacher)
-  }
-
+  };
 
   return (
     <>
-      {teachers.map((teacher) => {
-        if (teacher.id == params.id) {
+      {teachers.map((teacher, index) => {
+        if (teacher._id === params.id) {
           return (
-            <section id="teacher-details" key={teacher.id}>
+            <section id="teacher-details" key={index}>
               <section id="teacher-header" className="teacher-header">
                 <div className="header-info">
-                  <img
+                  {/* <img
                     src={`https://drive.google.com/uc?export=view&id=${teacher.foto}`}
+                    alt=""
+                    className="teacher-img"
+                  /> */}
+                  <img
+                    src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
                     alt=""
                     className="teacher-img"
                   />
                   <div className="header-text">
                     <p className="name">{teacher.nama}</p>
                     <p className="jurusan">
-                      {teacher.edukasi[0].jurusan} | {teacher.edukasi[0].lokasi}
+                      {/* {teacher.edukasi[0].jurusan} | {teacher.edukasi[0].lokasi} */}
                     </p>
                     <p className="alamat">
-                      {teacher.alamat["kabupaten kota"]} |{" "}
-                      {teacher.alamat.provinsi}
+                      {/* {teacher.alamat["kabupaten kota"]} |{" "}
+                      {teacher.alamat.provinsi} */}
                     </p>
                   </div>
                 </div>
                 <div className="header-btn">
-                  <button id="submit" onClick={() => handleChoose(teacher)}>Belajar dengan {teacher.nama}</button>
-                  <Link to='/teacher'>Lihat Pengajar Lain</Link>
+                  <button id="submit" onClick={() => handleChoose(teacher)}>
+                    Belajar dengan {teacher.nama}
+                  </button>
+                  <Link to="/teacher">Lihat Pengajar Lain</Link>
                 </div>
               </section>
               <section className="teacher-main">
                 <div className="sub-navbar">
                   <ul className="sub-navbar-menu">
-                    <li id="nav-profil" onClick={handleBio} className={isBio ? "navbar-menu" : "navbar-menu hidden"} >Profil Diri</li>
-                    <li id="nav-pengalaman" onClick={handleExp} className={isExp ? "navbar-menu" : "navbar-menu hidden"}>Pengalaman</li>
-                    <li id="nav-ulasan" onClick={handleReview} className={isReview ? "navbar-menu" : "navbar-menu hidden"} > Ulasan</li>
+                    <li
+                      id="nav-profil"
+                      onClick={handleBio}
+                      className={isBio ? "navbar-menu" : "navbar-menu hidden"}
+                    >
+                      Profil Diri
+                    </li>
+                    <li
+                      id="nav-pengalaman"
+                      onClick={handleExp}
+                      className={isExp ? "navbar-menu" : "navbar-menu hidden"}
+                    >
+                      Pengalaman
+                    </li>
+                    <li
+                      id="nav-ulasan"
+                      onClick={handleReview}
+                      className={
+                        isReview ? "navbar-menu" : "navbar-menu hidden"
+                      }
+                    >
+                      {" "}
+                      Ulasan
+                    </li>
                   </ul>
                 </div>
 
-                <section id="teacher-details">
-                  <div id="profil-diri" className={isBio ? "sub-menu" : "sub-menu hidden"}>
+                {/* <section id="teacher-details">
+                  <div
+                    id="profil-diri"
+                    className={isBio ? "sub-menu" : "sub-menu hidden"}
+                  >
                     <div className="deskripsi-diri">
                       <h2>Deskripsi Diri</h2>
-                      <p>
-                        {teacher.deskripsi}
-                      </p>
+                      <p>{teacher.deskripsi}</p>
                     </div>
 
                     <div className="profil-diri-bawah">
@@ -122,7 +151,7 @@ const TeacherDetails = () => {
                       <div className="bidang-ajar">
                         <h2>Bidang Ajar</h2>
                         <ul id="bidang-ajar">
-                          {teacher['bidang ajar'].map((bidang, index) => (
+                          {teacher["bidang ajar"].map((bidang, index) => (
                             <li key={index}>{bidang}</li>
                           ))}
                         </ul>
@@ -130,7 +159,10 @@ const TeacherDetails = () => {
                     </div>
                   </div>
 
-                  <div id="pengalaman" className={isExp ? "sub-menu" : "sub-menu hidden"}>
+                  <div
+                    id="pengalaman"
+                    className={isExp ? "sub-menu" : "sub-menu hidden"}
+                  >
                     <h2>Daftar Pengalaman</h2>
 
                     {teacher.pengalaman.map((pengalaman, index) => (
@@ -141,14 +173,15 @@ const TeacherDetails = () => {
                           <p className="mulai">{pengalaman.mulai} |</p>
                           <p className="selesai">{pengalaman.selesai}</p>
                         </div>
-                        <p className="deskripsi">
-                          {pengalaman.deskripsi}
-                        </p>
+                        <p className="deskripsi">{pengalaman.deskripsi}</p>
                       </div>
                     ))}
                   </div>
 
-                  <div id="ulasan" className={isReview ? "sub-menu" : "sub-menu hidden"}>
+                  <div
+                    id="ulasan"
+                    className={isReview ? "sub-menu" : "sub-menu hidden"}
+                  >
                     <div id="rating-container" className="rating-pengajar">
                       <h2>Rating Pengajar</h2>
 
@@ -170,10 +203,12 @@ const TeacherDetails = () => {
                         <img src={Star} alt="bintang" />
                         <h2>{teacher.overall.bintang}</h2>
                       </div>
-                      <p className="jumlah-ulasan">{teacher.overall.jumlah} ulasan</p>
+                      <p className="jumlah-ulasan">
+                        {teacher.overall.jumlah} ulasan
+                      </p>
                     </div>
                   </div>
-                </section>
+                </section> */}
               </section>
             </section>
           );

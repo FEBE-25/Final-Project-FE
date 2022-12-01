@@ -1,6 +1,7 @@
 export const GET_TEACHERS = "GET_TEACHERS";
 
-const API_URL = "https://634a01375df95285140a732e.mockapi.io/teachers";
+const API_URL =
+  "https://final-project-be-production-0be5.up.railway.app/pengajar";
 
 export const getTeachers = () => {
   try {
@@ -12,10 +13,10 @@ export const getTeachers = () => {
         },
       });
       const data = await result.json();
-      if (data) {
+      if (data.data) {
         dispatch({
           type: "GET_TEACHERS",
-          payload: data,
+          payload: data.data,
         });
       } else {
         console.log("unable to fetch data");
