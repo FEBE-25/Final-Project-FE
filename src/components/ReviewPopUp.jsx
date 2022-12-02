@@ -4,13 +4,13 @@ import React, { useState } from 'react'
 const ReviewPopUp = ({ teacher, user, item }) => {
 
     const [bintang, setBintang] = useState(parseInt("0"))
-    const [review, setReview] = useState("")
-    const [reviewer, setReviewer] = useState(user.nama)
+    const [deskripsi, setDeskripsi] = useState("")
+    const [nama, setNama] = useState(user.nama)
 
     const handleSubmit = (e) => {
         e.preventDefault()
         const dataUlasan = teacher.review;
-        dataUlasan.push({ bintang, reviewer, review })
+        dataUlasan.push({ bintang, nama, deskripsi })
         handleReview(dataUlasan)
         handleStatus()
     }
@@ -43,9 +43,9 @@ const ReviewPopUp = ({ teacher, user, item }) => {
                 <form className='review-popup' action="" onSubmit={handleSubmit}>
                     <p className='review-popup-header'>Berikan Rating kepada Pengajarmu</p>
                     <label htmlFor="bintang">Bintang</label>
-                    <input type="number" id='bintang' min="0" max="5" value={bintang} onChange={(e) => setBintang(e.target.value)} />
+                    <input type="number" id='bintang' min="0" max="5" value={bintang} onChange={(e) => setBintang(parseInt(e.target.value))} />
                     <label htmlFor="ulasan">Ulasan</label>
-                    <textarea name="" id="ulasan" cols="30" rows="10" value={review} onChange={(e) => setReview(e.target.value)}></textarea>
+                    <textarea name="" id="ulasan" cols="30" rows="10" value={deskripsi} onChange={(e) => setDeskripsi(e.target.value)}></textarea>
                     <button type='submit'>Kirim Ulasan</button>
                 </form>
             }

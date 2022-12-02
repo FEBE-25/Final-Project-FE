@@ -59,6 +59,15 @@ const TeacherDetails = () => {
     // console.log(order.teacher)
   }
 
+  const handleSumBintang = (reviews) => {
+    let sum = 0
+    reviews.forEach((review) => {
+      sum += Number(review.bintang)
+    })
+    let avg = sum / reviews.length
+    return avg.toFixed(2)
+  }
+
 
   return (
     <>
@@ -168,9 +177,9 @@ const TeacherDetails = () => {
                       <h2>Overall Rating</h2>
                       <div className="rating">
                         <img src={Star} alt="bintang" />
-                        <h2>{teacher.overall.bintang}</h2>
+                        <h2>{handleSumBintang(teacher.review)}</h2>
                       </div>
-                      <p className="jumlah-ulasan">{teacher.overall.jumlah} ulasan</p>
+                      <p className="jumlah-ulasan">{teacher.review.length} ulasan</p>
                     </div>
                   </div>
                 </section>

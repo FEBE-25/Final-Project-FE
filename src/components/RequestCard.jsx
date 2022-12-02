@@ -64,7 +64,7 @@ const RequestCard = ({ item, user }) => {
                             <p className="pesanan-sub-judul">Pengajar</p>
                             <div className="info-text">
                                 <p className="nama">Nama: {teacher.nama}</p>
-                                <p className='pesanan-noHp'>No. Hp:{teacher.noHp}</p>
+                                <p className='pesanan-noHp'>No. Hp: {teacher.noHp}</p>
                                 <p className="pesanan-email">Email: {teacher.email}</p>
                                 <p className="pesanan-edukasi">Universitas: {teacher.edukasi[0].lokasi}</p>
                                 <p className="pesanan-edukasi"> Jurusan: {teacher.edukasi[0].jurusan}</p>
@@ -113,8 +113,12 @@ const RequestCard = ({ item, user }) => {
                     <div className="pesanan-lokasi">
                         <p className="pesanan-sub-judul">Lokasi Sesi</p>
                         <p className="mode-lokasi">Mode pembelajaran: {item.modeBelajar}</p>
-                        <p className="alamat-lokasi">alamat: {item.alamat}</p>
-                        <p className="maps-lokasi">maps: {item.maps}</p>
+                        {item.modeBelajar == "offline" ?
+                            <>
+                                <p className="alamat-lokasi">alamat: {item.alamat}</p>
+                                <p className="maps-lokasi">maps: {item.maps}</p>
+                            </>
+                            : <></>}
                     </div>
 
                 </>
