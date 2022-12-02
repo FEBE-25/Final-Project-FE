@@ -1,25 +1,32 @@
-/* .add-teacher {
-  width: 60%;
+#add-teacher.add-teacher {
   margin: 0 auto;
-  padding: 20px;
+  width: 100%;
 }
 
-.add-title {
+#add-teacher .return {
+  color: var(--orange);
+  font-weight: 700;
+  text-align: center;
+  width: 100%;
+  display: block;
+  margin-bottom: 16px;
+}
+
+#add-teacher .add-title {
   font-size: 2rem;
   font-weight: bold;
   margin-bottom: 10px;
   text-align: center;
 }
 
-.form-container {
+#add-teacher .form-container {
   width: 100%;
   background-color: #103d2a;
   color: #fff;
-  border-radius: 10px;
   padding: 10px;
 }
 
-.form-wrapper {
+#add-teacher .form-wrapper {
   width: 50%;
   margin: 20px auto;
   display: flex;
@@ -29,14 +36,14 @@
   gap: 10px;
 }
 
-.form-wrapper>div {
+#add-teacher .form-wrapper>div {
   width: 100%;
   display: flex;
   flex-direction: column;
   gap: 5px;
 }
 
-.form-wrapper .edukasi {
+#add-teacher .form-wrapper .edukasi {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -45,24 +52,24 @@
   gap: 5px;
 }
 
-.input-addteacher {
+#add-teacher .input-addteacher {
   font-size: 10px;
   padding: 5px;
 }
 
-.edukasi {
+#add-teacher .edukasi {
   display: flex;
 }
 
-.edukasi input {
+#add-teacher .edukasi input {
   width: 100px;
 }
 
-.btn-add-wrapper {
+#add-teacher .btn-add-wrapper {
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 10px;
   font-weight: 600;
-} */
+}

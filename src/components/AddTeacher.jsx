@@ -57,9 +57,9 @@ const AddTeacher = () => {
       {user && user.admin ?
 
         <>
-          <div className="add-teacher">
-            <Link to='/admin' className='return'>Kembali ke Dashboard</Link>
+          <div className="add-teacher" id="add-teacher">
             <div className="form-container">
+              <Link to='/admin' className='return'>Kembali ke Dashboard</Link>
               <h1 className="add-title">Menambahkan Teacher Baru</h1>
               <form className="form-wrapper" onSubmit={handleSubmit}>
                 <div className="nama">
