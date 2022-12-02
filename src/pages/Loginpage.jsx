@@ -54,11 +54,11 @@ const Loginpage = () => {
       </div>
 
       <div className="login__right">
-        <div className="login__right-header">
-          <h1>Masuk</h1>
-        </div>
 
         <div className="login__right-form">
+          <div className="login__right-header">
+            <h1>Masuk</h1>
+          </div>
           <form action="" id="form" onSubmit={handleSubmit}>
             <div className="form__group">
               <label htmlFor="user_email">Email</label>
@@ -91,7 +91,7 @@ const Loginpage = () => {
                 className="btn"
                 id="btn-login"
               >
-                login
+                Login
               </button>
             </div>
           </form>

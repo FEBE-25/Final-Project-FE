@@ -1,7 +1,7 @@
 .login-container {
   width: 100%;
   height: calc(100vh - 80px);
-  background: #207953;
+  background: var(--hijau-tua);
   display: grid;
   grid-template-columns: 1fr 1fr;
   color: rgb(240, 240, 240);
@@ -67,8 +67,14 @@
   border-radius: 5px;
   font-size: 1rem;
   font-weight: 500;
+  font-weight: 700;
   color: #222222;
   margin-top: 1rem;
+}
+
+#btn-login.btn {
+  font-weight: 700;
+  cursor: pointer;
 }
 
 .register__right-footer p {
@@ -89,12 +95,19 @@
 }
 
 @media screen and (max-width: 768px) {
-  .container {
-    grid-template-columns: 1fr;
+  #login {
+    width: 100%;
+    display: block;
   }
 
   .login__left {
     display: none;
+  }
+
+  .login__right {
+    padding-top: 96px;
+    margin: auto;
+    width: 100%;
   }
 }
 
