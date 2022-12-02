@@ -11,7 +11,7 @@
 }
 
 .teacher-title {
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: 700;
 }
 
@@ -31,4 +31,16 @@
   padding: 8px 10px;
   border-radius: 6px;
   border: 1px solid #181818;
+}
+
+@media screen and (max-width: 768px) {
+  .teacher-container {
+    padding: 64px;
+    display: flex;
+    align-items: center;
+  }
+
+  .teacher-title {
+    text-align: center;
+  }
 }

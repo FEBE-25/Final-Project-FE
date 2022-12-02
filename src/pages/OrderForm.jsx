@@ -8,8 +8,6 @@ const OrderForm = () => {
 
     const [userId, setUserId] = useState("")
     const [teacherId, setTeacherId] = useState("")
-    const [biaya, setBiaya] = useState(50000)
-    const [biayaTotal, setBiayaTotal] = useState("")
     const [jenjangMateri, setJenjangMateri] = useState("")
     const [topik, setTopik] = useState("")
     const [detailTopik, setDetailTopik] = useState("")
@@ -20,10 +18,19 @@ const OrderForm = () => {
     const [alamat, setAlamat] = useState("")
     const [maps, setMaps] = useState("")
     const [tambahan, setTambahan] = useState("")
+    const [toggleLokasi, setToggleLokasi] = useState(false)
     const [dataOrder, setDataOrder] = useState({})
 
     const { teacher } = useSelector((state) => state.order)
     const { user } = useSelector((state) => state.user)
+
+    const handleToggleLokasiOn = () => {
+        setToggleLokasi(true)
+    }
+
+    const handleToggleLokasiOff = () => {
+        setToggleLokasi(false)
+    }
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -33,15 +40,11 @@ const OrderForm = () => {
     const navigation = useNavigate()
 
     const postOrder = () => {
-        const dataOrder = { userId, teacherId, biayaTotal, jenjangMateri, topik, detailTopik, tanggal, jamMulai, durasi, modeBelajar, alamat, maps, tambahan }
+        const dataOrder = { userId, teacherId, jenjangMateri, topik, detailTopik, tanggal, jamMulai, durasi, modeBelajar, alamat, maps, tambahan }
         axios.post('https://634a01375df95285140a732e.mockapi.io/order', dataOrder).then(res => {
             navigation('/request')
         })
     }
-
-    useEffect(() => {
-        setBiayaTotal(biaya * (durasi / 60))
-    }, [durasi])
 
     useEffect(() => {
         setTeacherId(teacher.id)
@@ -57,8 +60,6 @@ const OrderForm = () => {
                     <img src={`https://drive.google.com/uc?export=view&id=${teacher.foto}`} alt="foto-pengajar" />
                     <p>{teacher.nama}</p>
                     <p>{teacher.edukasi[0].lokasi} | {teacher.edukasi[0].jurusan}</p>
-                    <p>Biaya Sesi</p>
-                    <p>Rp50.000 | 1 jam</p>
                 </div>
 
                 <div className="materi">
@@ -102,7 +103,7 @@ const OrderForm = () => {
                             </div>
 
                             <div className="durasi-container">
-                                <p>Durasi</p>
+                                <p>Durasi (menit)</p>
                                 <input type="number" placeholder="menit" className="durasi" value={durasi} onChange={(e) => { setDurasi(e.target.value) }} />
                             </div>
                         </div>
@@ -115,20 +116,22 @@ const OrderForm = () => {
                     <h3 className="form-heading">Lokasi Les</h3>
 
                     <div className="mode-pembelajaran">
-                        <input type="radio" name="lokasi" id="rd-on" value="online" checked={modeBelajar === "online"} onChange={(e) => { setModeBelajar(e.target.value) }} />
+                        <input type="radio" name="lokasi" id="rd-on" value="online" checked={modeBelajar === "online"} onChange={(e) => { setModeBelajar(e.target.value) }} onClick={handleToggleLokasiOff} />
                         <label htmlFor="rd-on">Online</label>
-                        <input type="radio" name="lokasi" id="rd-off" value="offline" checked={modeBelajar === "offline"} onChange={(e) => { setModeBelajar(e.target.value) }} />
+                        <input type="radio" name="lokasi" id="rd-off" value="offline" checked={modeBelajar === "offline"} onChange={(e) => { setModeBelajar(e.target.value) }} onClick={handleToggleLokasiOn} />
                         <label htmlFor="rd-off">Offline</label>
                     </div>
 
-                    <div className="detail-lokasi">
-                        <div className="alamat-lengkap">
-                            <p>Alamat</p>
-                            <textarea name="" id="" cols="30" rows="10" placeholder="Tuliskan alamatmu selengkap mungkin" value={alamat} onChange={(e) => { setAlamat(e.target.value) }}></textarea>
+                    {toggleLokasi ?
+                        <div className="detail-lokasi">
+                            <div className="alamat-lengkap">
+                                <p>Alamat</p>
+                                <textarea name="" id="" cols="30" rows="10" placeholder="Tuliskan alamatmu selengkap mungkin" value={alamat} onChange={(e) => { setAlamat(e.target.value) }}></textarea>
+                            </div>
+                            <label htmlFor="maps">Lokasi Maps</label>
+                            <input type="text" name="maps" placeholder="Link google maps" value={maps} onChange={(e) => { setMaps(e.target.value) }} />
                         </div>
-                        <label htmlFor="maps">Lokasi Maps</label>
-                        <input type="text" name="maps" placeholder="Link google maps" value={maps} onChange={(e) => { setMaps(e.target.value) }} />
-                    </div>
+                        : <></>}
                 </div>
 
                 <div className="info-tambahan">

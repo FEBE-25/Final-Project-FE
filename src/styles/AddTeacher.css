@@ -1,4 +1,4 @@
-.add-teacher {
+/* .add-teacher {
   width: 60%;
   margin: 0 auto;
   padding: 20px;
@@ -24,12 +24,12 @@
   margin: 20px auto;
   display: flex;
   flex-direction: column;
-  /* justify-content: center; */
+
   align-items: center;
   gap: 10px;
 }
 
-.form-wrapper > div {
+.form-wrapper>div {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -65,4 +65,4 @@
   align-items: center;
   gap: 10px;
   font-weight: 600;
-}
+} */

@@ -121,12 +121,13 @@
 .waktu-input {
   display: flex;
   flex-direction: column;
+  width: 100%;
 }
 
 .waktu-bottom {
   display: flex;
   gap: 24px;
-
+  width: 100%;
 }
 
 .mode-pembelajaran label {
@@ -196,6 +197,7 @@
   .waktu-bottom .durasi-container {
     display: flex;
     flex-direction: column;
+    width: 100%;
   }
 
   .durasi-container {
