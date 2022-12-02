@@ -29,15 +29,15 @@ function TeacherList() {
     <>
       {/* <Navbar /> */}
       <div className="teacher-container">
-        <h1 className="teacher-title">Daftar Pengajar</h1>
+        <h1 className="teacher-title">Pilih Pengajar yang Kamu Suka</h1>
         <div className="search-teacher-wrapper">
           <label htmlFor="search-input" className="search-title">
-            Search Pengajar
+            Cari Pengajar
           </label>
           <input
             type="search"
             id="search-input"
-            placeholder="nama/jurusan/lokasi"
+            placeholder="nama/jurusan"
             autoComplete="off"
             value={search}
             onChange={(e) => setSearch(e.target.value.toLowerCase())}

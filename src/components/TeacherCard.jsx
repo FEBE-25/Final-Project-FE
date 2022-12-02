@@ -1,5 +1,6 @@
 // import React, { useEffect, useState } from "react";
 import "../styles/TeacherCard.css";
+import Star from "../images/star.svg";
 
 function TeacherCard({ data }) {
   return (
@@ -26,7 +27,8 @@ function TeacherCard({ data }) {
           </div>
           <div className="teacher-rating">
             <div className="teacher-rating-rating">
-              ★ <span>{item.overall.bintang}</span>
+              <img src={Star} alt="" />
+              <p>{item.overall.bintang}</p>
             </div>
             <div className="teacher-rating-review">10 ulasan</div>
           </div>

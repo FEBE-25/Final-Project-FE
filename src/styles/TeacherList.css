@@ -1,12 +1,13 @@
 @import "../base.css";
 
 .teacher-container {
-  width: 80%;
+  /* width: 80%; */
   margin: 0 auto;
+  padding: 64px 128px;
   display: flex;
   flex-direction: column;
   gap: 20px;
-  color: #181818;
+  color: var(--hijau-tua);
 }
 
 .teacher-title {

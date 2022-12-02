@@ -13,8 +13,8 @@ const Homepage = () => {
                     <h1>Butuh Bimbingan? <br /> Yuk Belajar Bersama Kami</h1>
                     <p>Ajarin merupakan platform yang membantu kalian dalam mendapatkan pengajar yang ahli di bidangnya dan kelompok belajar yang saling mendukung</p>
                     <div className='homepage-btn'>
-                        <Link to={isLogin ? '/teacher' : '/regis'}>Pesan Les Sekarang</Link>
-                        <Link to='/teacher'>Pelajar Lebih Lanjut</Link>
+                        <Link to={isLogin ? '/teacher' : '/regis'}>Pelajari Lebih Lanjut</Link>
+                        <Link to='/teacher'>Pesan Les Sekarang</Link>
                     </div>
                 </div>
                 <div className='homepage-img'>
