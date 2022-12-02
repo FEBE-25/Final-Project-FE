@@ -3,6 +3,15 @@ import "../styles/TeacherCard.css";
 import Star from "../images/star.svg";
 
 function TeacherCard({ data }) {
+  const handleSumBintang = (reviews) => {
+    let sum = 0
+    reviews.forEach((review) => {
+      sum += Number(review.bintang)
+    })
+    let avg = sum / reviews.length
+    return avg.toFixed(2)
+  }
+
   return (
     <div className="wrapper-list-teacher">
       {data.map((item) => (
@@ -28,9 +37,9 @@ function TeacherCard({ data }) {
           <div className="teacher-rating">
             <div className="teacher-rating-rating">
               <img src={Star} alt="" />
-              <p>{item.overall.bintang}</p>
+              <p>{handleSumBintang(item.review)}</p>
             </div>
-            <div className="teacher-rating-review">10 ulasan</div>
+            <div className="teacher-rating-review">{item.review.length} ulasan</div>
           </div>
         </div>
       ))}
